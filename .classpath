@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="lib/junit-jar-4.8.2.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-all-jar-1.8.5.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-base-1.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-client-1.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-client-meta-1.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-core-1.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-maps-2.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-maps-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-media-1.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-photos-2.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/gdata-photos-meta-2.0.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/google-collect-1.0-rc1.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/jsr305.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/mail-1.4.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/idoran/Development/GAE/picasa-gallery/lib/servlet-api-2.3.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="output" path="web/WEB-INF/classes"/>
+</classpath>

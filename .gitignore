@@ -1,3 +1,5 @@
 *.iml
 .idea
 out
+bin
+web/WEB-INF/classes
