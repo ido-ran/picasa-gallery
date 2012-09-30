@@ -402,6 +402,39 @@ function fadeTo(href) {
     });
 }
 
+var hiddenAlbums = new Set();
+
+function filterAlbums(search) {
+	if (search === null || search.trim().length < 3) {
+		// show everything
+		$('.albums a').show(5000);
+		hiddenAlbums = new Set();
+	} else {
+		var albumsToHideItr = 
+			$('.albums a .title .text')
+			.filter(function() { return $(this).text().indexOf(search) == -1; })
+			.closest('a');
+		
+		var albumsToHide = new Set();
+		albumsToHideItr.each(function(i,e) {
+			albumsToHide.add(e);
+		});
+		
+		var actualToHide = albumsToHide.difference(hiddenAlbums);
+		var actualToShow = hiddenAlbums.difference(albumsToHide);
+		
+		console.log("to hide");
+		console.log(actualToHide);
+		console.log("to show");
+		console.log(actualToShow);
+		
+		hiddenAlbums = albumsToHide;
+		
+		actualToHide.getElements().forEach(function(e) { $(e).hide(3000); });
+		actualToShow.getElements().forEach(function(e) { $(e).show(3000); });
+	}
+}
+
 $(function() {
     setTimeout(function() {scrollTo(0, 1)}, 10);
     updateLayout();
@@ -413,9 +446,12 @@ $(function() {
     });
 
     $('form#search').submit(function() {
-        fadeTo('/' + $(this).find('input').val() + location.search);
         return false;
     });
+    
+    $('form#search input').live('input', function() {
+        filterAlbums(this.value);
+    })
 
     $(window).resize(updateLayout);
     $(window).scroll(loadVisibleThumbs);
