@@ -416,6 +416,19 @@ $(function() {
         fadeTo('/' + $(this).find('input').val() + location.search);
         return false;
     });
+    
+
+    // Load the albums lookup json
+    $.ajax({
+        url: '/_api/getAlbumsLookup'  
+    }).done(function(data) {
+    	// When receive the lookup set autocomplete on the search box
+    	$('form#search input').autocomplete({
+        	source: data,
+        	select: function(event, ui) { fadeTo(ui.item.value); }
+        }); 
+    });
+    	
 
     $(window).resize(updateLayout);
     $(window).scroll(loadVisibleThumbs);

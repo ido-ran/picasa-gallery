@@ -29,6 +29,10 @@ public class RequestRouter implements Filter {
         else if (path == null || "/".equals(path)) {
             render("gallery", picasa.getGallery(), request, response);
         }
+        else if (path.startsWith("/_api/getAlbumsLookup")) {
+        	request.setAttribute("gallery", picasa.getGallery());
+        	renderApi("api_AlbumsLookup", picasa.getGallery(), request, response);
+        }
         else if (path.lastIndexOf('.') >= path.length() - 4) {
             chain.doFilter(req, resp);
         }
@@ -56,6 +60,11 @@ public class RequestRouter implements Filter {
         if (source instanceof BaseFeed)
             response.addHeader("ETag", ((BaseFeed)source).getEtag());
 
+        request.getRequestDispatcher("/WEB-INF/jsp/" + template + ".jsp").include(request, response);
+    }
+    
+    void renderApi(String template, Object source, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("application/json; charset=utf8");
         request.getRequestDispatcher("/WEB-INF/jsp/" + template + ".jsp").include(request, response);
     }
 
